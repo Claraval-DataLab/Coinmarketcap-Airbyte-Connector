@@ -2,6 +2,11 @@
 
 This connector allows you to import data from the CoinMarketCap public API into Airbyte. You can create your own connector in Airbyte using the provided YAML file.
 
+This connector supports the following streams:
+
+- `coinmarketcap_map_tokens`: Returns basic information about cryptocurrency tokens.
+- `coinmarketcap_new_tokens`: Returns information about newly listed cryptocurrency tokens.
+
 ## Usage
 
 To use this connector, follow these steps:
