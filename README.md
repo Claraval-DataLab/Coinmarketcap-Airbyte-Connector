@@ -24,7 +24,7 @@ To use this connector, follow these steps:
    - Once the connector is configured, you can test it by running a sync in Airbyte.
    - Check the sync logs to ensure that data is being imported correctly from CoinMarketCap.
 
-For more detailed instructions on creating custom connectors in Airbyte, refer to the [Airbyte Connector Builder UI tutorial](https://docs.airbyte.com/connector-development/connector-builder-ui/tutorial).
+For more instructions, refer to the [Airbyte Connector Builder UI tutorial](https://docs.airbyte.com/connector-development/connector-builder-ui/tutorial).
 
 **Thank you for using the Coinmarketcap-Airbyte-Connector!**
 
