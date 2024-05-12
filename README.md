@@ -1,42 +1,26 @@
-# Airbyte CoinMarketCap Connector
+# Coinmarketcap-Airbyte-Connector
 
-This connector enables you to extract valuable data from CoinMarketCap for integration within Airbyte.
-
-## Installation
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://<your-github-username>/<your-repository-name>.git
-   ```
-   Use the code with caution.
-
-   Replace `<your-github-username>` with your actual GitHub username and `<your-repository-name>` with the name of your repository hosting the connector code.
-
-2. **Import into Airbyte:**
-
-   Import the `coinmarketcap_airbyte_connector.yaml` file into Airbyte. This file serves as the configuration blueprint for the connector within Airbyte.
-
-3. **Configure API Credentials:**
-
-   Within Airbyte, securely configure your CoinMarketCap API credentials to grant the connector the necessary access to extract data.
-
-4. **Initiate Data Synchronization:**
-
-   Once configured, trigger the syncing process in Airbyte. This will commence the extraction of data from CoinMarketCap.
+This connector allows you to import data from the CoinMarketCap public API into Airbyte. You can create your own connector in Airbyte using the provided YAML file.
 
 ## Usage
 
-The `coinmarketcap_airbyte_connector.yaml` file acts as the central configuration hub for this connector within Airbyte. It's meticulously crafted to extract a wealth of data points from CoinMarketCap, encompassing essential details like cryptocurrency prices, market capitalization, trading volumes, and more.
+To use this connector, follow these steps:
 
-## Contributing
+1. Download the `coinmarketcap_airbyte_connector.yaml` file from this repository to your local machine.
 
-We actively welcome contributions from the community! If you have enhancements or bug fixes to share, feel free to open an issue or submit a pull request to our repository.
+2. Import the connector into Airbyte:
+   - Open Airbyte in your web browser.
+   - Go to the "Builder" tab and click on "Create a new custom connector."
+   - Choose "Import a YAML manifest" and select the `coinmarketcap_airbyte_connector.yaml` file you downloaded.
+   - Follow the prompts to configure the connector settings, such as API keys and data syncing frequency.
+   - Save the connector configuration.
 
-## License
+3. Test the connector:
+   - Once the connector is configured, you can test it by running a sync in Airbyte.
+   - Check the sync logs to ensure that data is being imported correctly from CoinMarketCap.
 
-This project operates under the permissive MIT License. The details of the license are outlined in the `LICENSE` file within the repository.
+For more detailed instructions on creating custom connectors in Airbyte, refer to the [Airbyte Connector Builder UI tutorial](https://docs.airbyte.com/connector-development/connector-builder-ui/tutorial).
 
-**Important Note:**
+**Thank you for using the Coinmarketcap-Airbyte-Connector!**
 
-Remember to replace `<your-github-username>` and `<your-repository-name>` with your specific GitHub credentials in the cloning step to successfully download the connector code.
+If you have any questions or feedback, please feel free to reach out to me on [GitHub](https://github.com/diegogarcia-claravaldatalab).
