@@ -5,13 +5,13 @@ type: DeclarativeSource
 check:
   type: CheckStream
   stream_names:
-    - Coinmarketcap-Airbyte-Connector
+    - coinmarketcap_map_tokens
 
 definitions:
   streams:
-    Coinmarketcap-Airbyte-Connector:
+    coinmarketcap_map_tokens:
       type: DeclarativeStream
-      name: Coinmarketcap-Airbyte-Connector
+      name: coinmarketcap_map_tokens
       retriever:
         type: SimpleRetriever
         requester:
@@ -26,13 +26,32 @@ definitions:
       schema_loader:
         type: InlineSchemaLoader
         schema:
-          $ref: '#/schemas/Coinmarketcap-Airbyte-Connector'
+          $ref: '#/schemas/coinmarketcap_map_tokens'
+    coinmarketcap_new_tokens:
+      type: DeclarativeStream
+      name: coinmarketcap_new_tokens
+      retriever:
+        type: SimpleRetriever
+        requester:
+          $ref: '#/definitions/base_requester'
+          path: https://web-api.coinmarketcap.com/v1/cryptocurrency/listings/new
+          http_method: GET
+        record_selector:
+          type: RecordSelector
+          extractor:
+            type: DpathExtractor
+            field_path: []
+      schema_loader:
+        type: InlineSchemaLoader
+        schema:
+          $ref: '#/schemas/coinmarketcap_new_tokens'
   base_requester:
     type: HttpRequester
-    url_base: https://web-api.coinmarketcap.com/v1/cryptocurrency/map
+    url_base: https://web-api.coinmarketcap.com/v1/cryptocurrency
 
 streams:
-  - $ref: '#/definitions/streams/Coinmarketcap-Airbyte-Connector'
+  - $ref: '#/definitions/streams/coinmarketcap_map_tokens'
+  - $ref: '#/definitions/streams/coinmarketcap_new_tokens'
 
 spec:
   type: Spec
@@ -45,10 +64,11 @@ spec:
 
 metadata:
   autoImportSchema:
-    Coinmarketcap-Airbyte-Connector: true
+    coinmarketcap_map_tokens: true
+    coinmarketcap_new_tokens: true
 
 schemas:
-  Coinmarketcap-Airbyte-Connector:
+  coinmarketcap_map_tokens:
     type: object
     $schema: http://json-schema.org/schema#
     properties:
@@ -117,6 +137,213 @@ schemas:
             first_historical_data:
               type:
                 - string
+                - 'null'
+      status:
+        type:
+          - object
+          - 'null'
+        properties:
+          elapsed:
+            type:
+              - number
+              - 'null'
+          timestamp:
+            type:
+              - string
+              - 'null'
+          error_code:
+            type:
+              - number
+              - 'null'
+          credit_count:
+            type:
+              - number
+              - 'null'
+    additionalProperties: true
+  coinmarketcap_new_tokens:
+    type: object
+    $schema: http://json-schema.org/schema#
+    properties:
+      data:
+        type:
+          - array
+          - 'null'
+        items:
+          type:
+            - object
+            - 'null'
+          properties:
+            id:
+              type:
+                - number
+                - 'null'
+            name:
+              type:
+                - string
+                - 'null'
+            slug:
+              type:
+                - string
+                - 'null'
+            tags:
+              type:
+                - array
+                - 'null'
+              items:
+                type:
+                  - object
+                  - 'null'
+                properties:
+                  name:
+                    type:
+                      - string
+                      - 'null'
+                  slug:
+                    type:
+                      - string
+                      - 'null'
+                  category:
+                    type:
+                      - string
+                      - 'null'
+            quote:
+              type:
+                - object
+                - 'null'
+              properties:
+                USD:
+                  type:
+                    - object
+                    - 'null'
+                  properties:
+                    price:
+                      type:
+                        - number
+                        - 'null'
+                    market_cap:
+                      type:
+                        - number
+                        - 'null'
+                    volume_24h:
+                      type:
+                        - number
+                        - 'null'
+                    last_updated:
+                      type:
+                        - string
+                        - 'null'
+                    percent_change_1h:
+                      type:
+                        - number
+                        - 'null'
+                    percent_change_7d:
+                      type:
+                        - number
+                        - 'null'
+                    volume_change_24h:
+                      type:
+                        - number
+                        - 'null'
+                    percent_change_24h:
+                      type:
+                        - number
+                        - 'null'
+                    percent_change_30d:
+                      type:
+                        - number
+                        - 'null'
+                    percent_change_60d:
+                      type:
+                        - number
+                        - 'null'
+                    percent_change_90d:
+                      type:
+                        - number
+                        - 'null'
+                    market_cap_dominance:
+                      type:
+                        - number
+                        - 'null'
+                    fully_diluted_market_cap:
+                      type:
+                        - number
+                        - 'null'
+            symbol:
+              type:
+                - string
+                - 'null'
+            is_fiat:
+              type:
+                - number
+                - 'null'
+            cmc_rank:
+              type:
+                - number
+                - 'null'
+            platform:
+              type:
+                - object
+                - 'null'
+              properties:
+                id:
+                  type:
+                    - number
+                    - 'null'
+                name:
+                  type:
+                    - string
+                    - 'null'
+                slug:
+                  type:
+                    - string
+                    - 'null'
+                symbol:
+                  type:
+                    - string
+                    - 'null'
+                token_address:
+                  type:
+                    - string
+                    - 'null'
+            is_active:
+              type:
+                - number
+                - 'null'
+            date_added:
+              type:
+                - string
+                - 'null'
+            max_supply:
+              type:
+                - number
+                - 'null'
+            last_updated:
+              type:
+                - string
+                - 'null'
+            total_supply:
+              type:
+                - number
+                - 'null'
+            infinite_supply:
+              type:
+                - boolean
+                - 'null'
+            num_market_pairs:
+              type:
+                - number
+                - 'null'
+            circulating_supply:
+              type:
+                - number
+                - 'null'
+            self_reported_market_cap:
+              type:
+                - number
+                - 'null'
+            self_reported_circulating_supply:
+              type:
+                - number
                 - 'null'
       status:
         type:
